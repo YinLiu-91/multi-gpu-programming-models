@@ -1,8 +1,8 @@
 # Copyright (c) 2017-2018, NVIDIA CORPORATION. All rights reserved.
 NP ?= 1
 NVCC=nvcc
-MPICXX=mpicxx
-MPIRUN ?= mpirun
+MPICXX=/home/liu/documents/work/cpp/openmpi-4.1.3/install/bin/mpicxx
+MPIRUN ?= /home/liu/documents/work/cpp/openmpi-4.1.3/install/bin/mpirun
 CUDA_HOME ?= /usr/local/cuda
 GENCODE_SM30	:= -gencode arch=compute_30,code=sm_30
 GENCODE_SM35	:= -gencode arch=compute_35,code=sm_35
@@ -12,7 +12,7 @@ GENCODE_SM52	:= -gencode arch=compute_52,code=sm_52
 GENCODE_SM60    := -gencode arch=compute_60,code=sm_60
 GENCODE_SM70    := -gencode arch=compute_70,code=sm_70
 GENCODE_SM80    := -gencode arch=compute_80,code=sm_80 -gencode arch=compute_80,code=compute_80
-GENCODE_FLAGS	:= $(GENCODE_SM70) $(GENCODE_SM80)
+GENCODE_FLAGS	:= $(GENCODE_SM70) $(GENCODE_SM80) 
 ifdef DISABLE_CUB
         NVCC_FLAGS = -Xptxas --optimize-float-atomics
 else
@@ -21,8 +21,8 @@ endif
 ifdef SKIP_CUDA_AWARENESS_CHECK
         MPICXX_FLAGS = -DSKIP_CUDA_AWARENESS_CHECK
 endif
-NVCC_FLAGS += -lineinfo $(GENCODE_FLAGS) -std=c++14
-MPICXX_FLAGS += -DUSE_NVTX -I$(CUDA_HOME)/include -std=c++14
+NVCC_FLAGS += -lineinfo $(GENCODE_FLAGS) -std=c++14 
+MPICXX_FLAGS += -DUSE_NVTX -I$(CUDA_HOME)/include -std=c++14 
 LD_FLAGS = -L$(CUDA_HOME)/lib64 -lcudart -lnvToolsExt
 jacobi: Makefile jacobi.cpp jacobi_kernels.o
 	$(MPICXX) $(MPICXX_FLAGS) jacobi.cpp jacobi_kernels.o $(LD_FLAGS) -o jacobi

@@ -1,8 +1,8 @@
 # Copyright (c) 2017-2018, NVIDIA CORPORATION. All rights reserved.
 NP ?= 1
 NVCC=nvcc
-MPICXX=mpicxx
-MPIRUN ?= mpirun
+MPICXX=/home/liu/documents/work/cpp/openmpi-4.1.3/install/bin/mpicxx
+MPIRUN ?= /home/liu/documents/work/cpp/openmpi-4.1.3/install/bin/mpirun
 CUDA_HOME ?= /usr/local/cuda
 GENCODE_SM30	:= -gencode arch=compute_30,code=sm_30
 GENCODE_SM35	:= -gencode arch=compute_35,code=sm_35

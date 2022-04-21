@@ -175,7 +175,7 @@ int main(int argc, char* argv[]) {
 
         MPI_CALL(MPI_Comm_free(&local_comm));
     }
-
+    std::cout<<"local_rank:\n"<<local_rank<<"\n";
     CUDA_RT_CALL(cudaSetDevice(local_rank));
     CUDA_RT_CALL(cudaFree(0));
 
