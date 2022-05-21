@@ -21,7 +21,7 @@ else
 endif
 NVCC_FLAGS += -lineinfo $(GENCODE_FLAGS) -std=c++14
 MPICXX_FLAGS = -DUSE_NVTX -I$(CUDA_HOME)/include -I$(NCCL_HOME)/include -std=c++14
-LD_FLAGS = -L$(CUDA_HOME)/lib64 -lcudart -lnvToolsExt -lnccl
+LD_FLAGS = -L$(CUDA_HOME)/lib64 -lcudart -lnvToolsExt -lnccl#nccl
 jacobi: Makefile jacobi.cpp jacobi_kernels.o
 	$(MPICXX) $(MPICXX_FLAGS) jacobi.cpp jacobi_kernels.o $(LD_FLAGS) -o jacobi
 

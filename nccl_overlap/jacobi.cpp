@@ -96,7 +96,7 @@ const int num_colors = sizeof(colors) / sizeof(uint32_t);
         }                                                                                   \
     }
 
-#include <nccl.h>
+#include </usr/include/nccl.h>
 
 #define NCCL_CALL(call)                                                                     \
     {                                                                                       \
@@ -156,6 +156,14 @@ bool get_arg(char** begin, char** end, const std::string& arg) {
 }
 
 int main(int argc, char* argv[]) {
+    {
+        int i=1;
+        while (i==1)
+        {
+            int j=3;
+        }
+        
+    }
     MPI_CALL(MPI_Init(&argc, &argv));
     int rank;
     MPI_CALL(MPI_Comm_rank(MPI_COMM_WORLD, &rank));
